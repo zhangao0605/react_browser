@@ -1,0 +1,13 @@
+.header_con{
+    padding: 0 5%;
+    background-color: #081237;
+    height: 60px;
+    line-height: 60px;
+    display: flex;
+    justify-content: space-between;
+
+}
+.heder_name{
+    color: aliceblue;
+    font-size: 20px;
+}

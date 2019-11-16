@@ -3,7 +3,7 @@ import {Button} from 'antd'
 import {connect} from 'react-redux'
 import {addNumber} from "../../store/actions/addAction";
 
-export class home extends Component {
+export class home_con extends Component {
     constructor(props) {
         super(props)
     }
@@ -30,4 +30,4 @@ function mapStateToProps(store) {
     }
 }
 
-export default connect(mapStateToProps)(home)
+export default connect(mapStateToProps)(home_con)

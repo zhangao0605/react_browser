@@ -1,9 +1,9 @@
-import {ADD_NUMBER} from "../actionTypes";
+import {ADD_NUMBER,LANG} from "../actionTypes";
 
 const initState = {
-    count: 0
+    count: 0,
 }
-export default function add(state = initState, action) {
+export default function addNumber(state = initState, action) {
     switch (action.type) {
         case ADD_NUMBER:
             return{count: state.count + 1}
