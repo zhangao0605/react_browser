@@ -1,6 +1,5 @@
 import React,{Component} from 'react'
 import './App.css';
-import {change_lang} from './store/actions/addAction'
 import Router from './router/index'
 import {emit} from './locales/emits'
 import zh_CN from 'antd/es/locale/zh_CN';
@@ -8,6 +7,7 @@ import en_US from 'antd/es/locale/en_US';
 import intl from 'react-intl-universal';
 import { ConfigProvider } from 'antd';
 import {connect} from 'react-redux';
+import Header from "./components/header";
 
 const locales = {
     'en-US': require('./locales/en-US.json'),
@@ -38,6 +38,7 @@ export class App extends Component{
         return (
                 // ConfigProvider antd  组件的国际化
                 <ConfigProvider locale={this.state.antdLang}>
+                    <Header/>
                 <Router/>
                 </ConfigProvider>
 

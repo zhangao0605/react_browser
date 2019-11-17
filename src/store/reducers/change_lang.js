@@ -7,7 +7,6 @@ export default function change_lang(state = initState, action) {
     switch (action.type) {
         case LANG:
             return {lang: action.lang}
-            console.log(state)
         default:
             return state;
     }

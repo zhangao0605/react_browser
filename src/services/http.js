@@ -1,6 +1,6 @@
 export const $http = {
     // URL:'https://browser.thinkey.org/PublicChainBrowser',
-    URL: 'http://data2.thinkey.xyz/BlockChainBrowser',
+    URL: 'http://publicchain.thinkey.xyz/PublicChainBrowser',
     UrlEncode: (obj) => {
         if (!obj || Object.prototype.toString.call(obj) !== '[object Object]') {
             return '';

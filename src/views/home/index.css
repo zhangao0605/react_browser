@@ -1,0 +1,22 @@
+.home_con{
+    padding: 0 5%;
+}
+.home_title{
+    margin-top: 30px;
+    height: 25px;
+    font-size: 18px;
+    color: #1890ff;
+    padding-bottom: 20px;
+}
+.home_search{
+    margin-top: 30px;
+    display: flex;
+    /*justify-content: space-between;*/
+}
+.home_search_part{
+    width: 50%;
+}
+.search_class{
+    margin-top: 20px;
+    width: 70%;
+}
