@@ -3,7 +3,9 @@ import intl from 'react-intl-universal'
 import './index.css'
 import {Input, Button, Table} from 'antd'
 import {$http} from '../../services/http'
-
+import {connect} from 'react-redux'
+import {header} from "../../components/header";
+import store from '../../store/index'
 export class home extends Component {
     constructor(props) {
         super(props)
@@ -12,7 +14,15 @@ export class home extends Component {
             input_value_2: '',
             table_data:[],
         }
+        store.subscribe(()=>{
+            const state = store.getState().change_lang.lang
+            console.log(state)
+            if(state=='en-US'){
+                this.search_1()
+            }else {
 
+            }
+        })
     }
 
     search_1() {
@@ -35,14 +45,21 @@ export class home extends Component {
             success: function (res) {
                 console.log(res)
                 this.setState({table_data: res.data.transactionsList.dataList})
-                setTimeout = () => {
-
-                }
-
             },
         });
     }
-
+    // componentWillReceiveProps(props,state){
+    //     if(this.props.lang==props.lang){
+    //
+    //     }else {
+    //         if(props.lang=='en-US'){
+    //             this.search_1()
+    //         }else {
+    //
+    //         }
+    //     }
+    //
+    // }
     render() {
         const columns = [
             {
@@ -117,7 +134,8 @@ export class home extends Component {
                         交易信息
                     </div>
                     <div>
-                        <Table columns={columns} dataSource={this.state.table_data}></Table>
+                        <Table columns={columns} dataSource={this.state.table_data} rowKey={row=>row.hash}></Table>
+
                     </div>
 
                 </div>
@@ -125,7 +143,10 @@ export class home extends Component {
         )
     }
 
-    Ò
 }
-
-export default home
+function mapStateToProps(store) {
+    return {
+        lang: store.change_lang.lang
+    }
+}
+export default connect(mapStateToProps)(home);

@@ -1,7 +1,7 @@
 import {LANG} from "../actionTypes";
 
 const initState = {
-    lang:'zh_CN'
+    lang:'zh-CN'
 }
 export default function change_lang(state = initState, action) {
     switch (action.type) {

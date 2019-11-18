@@ -1,6 +1,6 @@
 import React,{Component}  from 'react'
-import {connect} from 'react-redux';
 import {change_lang} from '../../store/actions/addAction'
+import {connect} from 'react-redux';
 import {emit} from '../../locales/emits';
 import './index.css'
 import { Select} from 'antd';
@@ -18,12 +18,16 @@ export class header extends Component{
         }
     }
     componentDidMount() {
+        console.log(this.props)
     }
     handleChange(value){
         emit.emit('change_language', value);
       this.props.dispatch(change_lang(value))
     }
-
+    to_download(){
+        // console.log()
+        // this.props.history.push('/download')
+    }
     render() {
         return(
             <div className='header_con'>
@@ -38,6 +42,9 @@ export class header extends Component{
                         {this.state.menu_arr.map(d => <Option key={d.id} value={d.id}>{d.name}</Option>)}
 
                     </Select>
+                    <span className='heder_dow' onClick={()=>{
+                        this.props.history.push(`/download`);
+                    }}>API下载</span>
                 </div>
             </div>
         )
@@ -49,5 +56,4 @@ function mapStateToProps(store) {
         lang: store.change_lang.lang
     }
 }
-// export default header
 export default connect(mapStateToProps)(header);

@@ -16,7 +16,6 @@ export const $http = {
         if (Objson.data) {
             Alldata = '?' + $http.UrlEncode(Objson.data);
         }
-        console.log(Alldata)
         fetch(`${$http.URL}${Objson.url}${Alldata}`, {
             method: 'get',
             mode: 'cors',
@@ -44,7 +43,6 @@ export const $http = {
                 return Data
             }
         }).then((res) => {
-            console.log(res)
             Objson.success.call(Nothis, res)
         }).catch((error) => {
             if (Objson.error) {
@@ -54,7 +52,6 @@ export const $http = {
     },
 
     post: (Nothis, Objson) => {
-        console.log(Objson)
         fetch(`${$http.URL}${Objson.url}`, {
             method: 'post',
             mode: 'cors',
@@ -64,7 +61,6 @@ export const $http = {
             },
             body: JSON.stringify(Objson.data)
         }).then((res) => {
-            console.log(res)
             if (res.status !== 200) {
                 throw res.status
             } else {

@@ -19,6 +19,9 @@ export class home_con extends Component {
                     this.add()
                 }}>加加加</Button>
                <div> {this.props.number}</div>
+                <Button onClick={() => {
+                    this.props.history.push(`/download`);
+                }}>sss</Button>
             </div>
         )
     }

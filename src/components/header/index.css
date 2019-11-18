@@ -11,3 +11,10 @@
     color: aliceblue;
     font-size: 20px;
 }
+.heder_dow{
+    cursor: pointer;
+    color: aliceblue;
+    display: inline-block;
+    margin-left: 50px;
+    font-size: 18px;
+}

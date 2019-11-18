@@ -1,4 +1,4 @@
-import {ADD_NUMBER,LANG} from "../actionTypes";
+import {ADD_NUMBER} from "../actionTypes";
 
 const initState = {
     count: 0,
