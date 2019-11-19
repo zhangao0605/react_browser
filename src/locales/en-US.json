@@ -1,4 +1,23 @@
 {
   "blockchain_details": "Blockchain Details",
+  "file_name": "File name",
+  "file_create_Time": "Creation time",
+  "file_size": "File size",
+  "file_version": "File version",
+  "Hash": "Hash",
+  "own_chain": "Own Chain",
+  "timestamp": "Timestamp",
+  "transaction_type": "Transaction Type",
+  "initiator": "Initiator",
+  "receiver": "Receiver",
+  "transfer_amount": "Transfer Amount",
+  "operating": "Operating",
+  "block_height_query": "Block height query",
+  "block_transaction_inquiry": "Block transaction inquiry",
+  "search": "search",
+  "api_download": "API download",
+  "trading_information": "Trading Information",
+  "enter_search_content": "Enter search content",
+
   "HTML": "This is <div>HTML</div>"
 }

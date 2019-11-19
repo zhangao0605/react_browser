@@ -1,4 +1,24 @@
 {
   "blockchain_details": "区块链详情",
+  "file_name": "文件名",
+  "file_create_Time": "创建时间",
+  "file_size": "文件大小",
+  "file_version": "文件版本",
+  "Hash": "Hash",
+  "own_chain": "所属链",
+  "timestamp": "时间戳",
+  "transaction_type": "交易类型",
+  "initiator": "发起方",
+  "receiver": "接收方",
+  "transfer_amount": "转账金额",
+  "operating": "操作",
+  "block_height_query": "区块高度查询",
+  "block_transaction_inquiry": "区块交易查询",
+  "search": "搜索",
+  "api_download": "API下载",
+  "trading_information": "交易信息",
+  "enter_search_content": "请输入搜索内容",
+
+
   "HTML": "这是 <div>HTML</div>"
 }

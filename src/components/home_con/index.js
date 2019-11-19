@@ -6,6 +6,9 @@ import {addNumber} from "../../store/actions/addAction";
 export class home_con extends Component {
     constructor(props) {
         super(props)
+        this.state={
+
+        }
     }
 
     add() {

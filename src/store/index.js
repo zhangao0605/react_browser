@@ -1,6 +1,7 @@
 import {createStore, combineReducers} from 'redux';
 import addReducer from "./reducers/addReducer";
 import change_lang from "./reducers/change_lang";
+import communication from "./reducers/communication";
 import {persistStore, persistReducer} from 'redux-persist';
 import storage from 'redux-persist/lib/storage';
 import autoMergeLevel2 from 'redux-persist/lib/stateReconciler/autoMergeLevel2';
@@ -13,7 +14,8 @@ const persistConfig = {
 
 const rootReducer = combineReducers({
     addReducer,
-    change_lang
+    change_lang,
+    communication
 })
 const myPersistReducer = persistReducer(persistConfig, rootReducer)
 const initializeState = {};

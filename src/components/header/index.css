@@ -10,6 +10,8 @@
 .heder_name{
     color: aliceblue;
     font-size: 20px;
+    cursor: pointer;
+    user-select: none;
 }
 .heder_dow{
     cursor: pointer;
@@ -17,4 +19,6 @@
     display: inline-block;
     margin-left: 50px;
     font-size: 18px;
+    width: 120px;
+    text-align: right;
 }

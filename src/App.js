@@ -9,6 +9,7 @@ import {ConfigProvider} from 'antd';
 import {connect} from 'react-redux';
 import Header from "./components/header";
 
+
 const locales = {
     'en-US': require('./locales/en-US.json'),
     'zh-CN': require('./locales/zh-CN.json'),
@@ -42,7 +43,7 @@ export class App extends Component {
         return (
             // ConfigProvider antd  组件的国际化
             <ConfigProvider locale={this.state.antdLang}>
-                <Header history={this.props.history}/>
+                <Header/>
                 <Router/>
             </ConfigProvider>
 

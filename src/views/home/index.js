@@ -1,43 +1,32 @@
 import React, {Component} from 'react'
 import intl from 'react-intl-universal'
-import './index.css'
-import {Input, Button, Table} from 'antd'
+import {Input, Button, Table, message} from 'antd'
 import {$http} from '../../services/http'
 import {connect} from 'react-redux'
-import {header} from "../../components/header";
 import store from '../../store/index'
+import './index.css'
+import utils from '../../utils/index'
+import {home_blockDetails} from '../../store/actions/addAction'
+
 export class home extends Component {
     constructor(props) {
         super(props)
         this.state = {
             input_value_1: '',
             input_value_2: '',
-            table_data:[],
+            table_data: [],
         }
-        store.subscribe(()=>{
+        store.subscribe(() => {
             const state = store.getState().change_lang.lang
-            console.log(state)
-            if(state=='en-US'){
-                this.search_1()
-            }else {
+            if (state === 'en-US') {
+            } else {
 
             }
         })
     }
 
-    search_1() {
-        console.log('111')
-    }
-
-    search_2() {
-        console.log('222')
-    }
-
-    delite() {
-        console.log('lll')
-    }
     componentDidMount() {
-        let send_data={"page":1,"chainId":"","hash":"","pagesize":10}
+        let send_data = {"page": 1, "chainId": "", "hash": "", "pagesize": 10}
         $http.post(this, {
             url: "/chain/getBlockNewTxPage",
             dataType: "json",
@@ -46,8 +35,9 @@ export class home extends Component {
                 console.log(res)
                 this.setState({table_data: res.data.transactionsList.dataList})
             },
-        });
+        })
     }
+
     // componentWillReceiveProps(props,state){
     //     if(this.props.lang==props.lang){
     //
@@ -60,81 +50,105 @@ export class home extends Component {
     //     }
     //
     // }
+    search_block(value ){
+       this.setState({
+           input_value_1:value
+       })
+    }
+    search_block_heght() {
+        if (this.state.input_value_1 === '') {
+            message.error('请输入正确块高，（不能为空！）')
+        } else {
+            this.props.dispatch(home_blockDetails(this.state.input_value_1))
+            this.props.history.push('/block_details')
+        }
+    }
+
     render() {
         const columns = [
             {
-                title: intl.get('blockchain_details'),
+                title: intl.get('Hash'),
                 dataIndex: 'hash',
                 ellipsis: true,
                 align: 'center',
-                render: text => <a>{text}</a>,
+                render: value => <span>{utils.slice_hash(value)}</span>,
             },
             {
-                title: '所属链',
+                title: intl.get('own_chain'),
                 dataIndex: 'chainId',
                 align: 'center'
             },
             {
-                title: '时间戳',
+                title: intl.get('timestamp'),
                 dataIndex: 'timestamp',
-                align: 'center'
+                align: 'center',
+                render: value => <span>{utils.timestampToTime(value)}</span>
             },
             {
-                title: '交易类型',
+                title: intl.get('transaction_type'),
                 dataIndex: 'txType',
                 align: 'center'
             },
             {
-                title: '发起方',
+                title: intl.get('initiator'),
                 dataIndex: 'from',
-                ellipsis: true,
-                align: 'center'
+                align: 'center',
+                render: value => <span>{utils.slice_hash(value)}</span>,
             },
             {
-                title: '接收方',
+                title: intl.get('receiver'),
                 dataIndex: 'to',
-                ellipsis: true,
-                align: 'center'
+                align: 'center',
+                render: value => <span>{utils.slice_hash(value)}</span>,
             },
             {
-                title: '转账金额',
+                title: intl.get('transfer_amount'),
                 dataIndex: 'nonce',
-                align: 'center'
+                align: 'center',
+                render: value => <span>{utils.scientificCounting(value)}</span>
             },
             {
-                title: 'Action',
+                title: intl.get('operating'),
                 align: 'center',
                 render: (text, record) => (
                     <span>
-        <a> {record.chainId}</a>
+        <span> {record.chainId}</span>
         <span onClick={() => {
             this.delite()
         }}>Delete</span>
       </span>
                 ),
             },
-        ];
+        ]
         return (
             <div className='home_con'>
                 <div className='home_title'> {intl.get('blockchain_details')} </div>
                 <div className='home_search'>
                     <div className='home_search_part'>
-                        区块链交易查询<br/>
-                        <Input placeholder='请输入搜索内容' className='search_class' value={this.state.input_value_1}></Input>
-                        <Button type='primary' style={{marginLeft: 30}} onClick={() => this.search_1()}>搜索</Button>
+                        {intl.get('block_height_query')}<br/>
+                        <Input placeholder={intl.get('enter_search_content')} className='search_class'
+                               defaultValue=''
+                               onChange={(e)=>{this.search_block(e.target.value)}}>
+                        </Input>
+                        <Button type='primary' style={{marginLeft: 30}}
+                                onClick={() => this.search_block_heght()}>{intl.get('search')}</Button>
                     </div>
                     <div className='home_search_part'>
-                        区块链交易查询<br/>
-                        <Input placeholder='请输入搜索内容' className='search_class' value={this.state.input_value_2}></Input>
-                        <Button type='primary' style={{marginLeft: 30}} onClick={() => this.search_2()}>搜索</Button>
+                        {intl.get('block_transaction_inquiry')}<br/>
+                        <Input placeholder={intl.get('enter_search_content')} className='search_class'
+                               defaultValue=''
+                               value={this.state.input_value_2}>
+                        </Input>
+                        <Button type='primary' style={{marginLeft: 30}}
+                                onClick={() => this.search_2()}>{intl.get('search')}</Button>
                     </div>
                 </div>
                 <div className='home_tr'>
-                    <div className='home_title'>
-                        交易信息
+                    <div className='home_title' style={{marginBottom: 30}}>
+                        {intl.get('trading_information')}
                     </div>
                     <div>
-                        <Table columns={columns} dataSource={this.state.table_data} rowKey={row=>row.hash}></Table>
+                        <Table columns={columns} dataSource={this.state.table_data} rowKey={row => row.hash}></Table>
 
                     </div>
 
@@ -144,9 +158,11 @@ export class home extends Component {
     }
 
 }
+
 function mapStateToProps(store) {
     return {
         lang: store.change_lang.lang
     }
 }
-export default connect(mapStateToProps)(home);
+
+export default connect(mapStateToProps)(home)
