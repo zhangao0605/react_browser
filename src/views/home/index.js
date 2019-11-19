@@ -32,7 +32,6 @@ export class home extends Component {
             dataType: "json",
             data: send_data,
             success: function (res) {
-                console.log(res)
                 this.setState({table_data: res.data.transactionsList.dataList})
             },
         })
