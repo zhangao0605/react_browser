@@ -1,5 +1,6 @@
 {
   "blockchain_details": "Blockchain Details",
+  "block_height": "Block height",
   "file_name": "File name",
   "file_create_Time": "Creation time",
   "file_size": "File size",
@@ -18,6 +19,9 @@
   "api_download": "API download",
   "trading_information": "Trading Information",
   "enter_search_content": "Enter search content",
-
+  "chainId": "ChainId",
+  "block_hash": "Block hash",
+  "trading_volume": "Trading volume",
+  "parent_block_hash": "Parent block hash",
   "HTML": "This is <div>HTML</div>"
 }

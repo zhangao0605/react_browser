@@ -1,4 +1,12 @@
 .block_details_con{
-    margin-top: 50px;
     padding:  0 5%;
+}
+.block_details_header{
+    font-size: 18px;
+    margin-top: 30px;
+    color: #1890ff;
+}
+.is_choose{
+    cursor: pointer;
+    color: #1890ff;
 }

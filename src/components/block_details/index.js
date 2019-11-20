@@ -5,6 +5,7 @@ import utils from "../../utils"
 import intl from 'react-intl-universal'
 import {Table} from 'antd'
 import './index.css'
+import {search_blockheight} from "../../store/actions/addAction"
 
 export class block_details extends Component {
     constructor(props) {
@@ -15,8 +16,7 @@ export class block_details extends Component {
     }
 
     componentDidMount() {
-        console.log(this.props.parames_id)
-        let data = {"height": "10", "chainId": "", "page": 1, "pagesize": 10, "hash": ""}
+        let data = {"height":this.props.parames_id, "chainId": "", "page": 1, "pagesize": 10, "hash": ""}
         $http.post(this, {
             url: "/chain/getBlockDataByPage",
             dataType: "json",
@@ -26,41 +26,53 @@ export class block_details extends Component {
             },
         })
     }
+    /*根据区块hash/高度/id跳转区块详情*/
+    to_height_de(e){
+        this.props.dispatch(search_blockheight(e))
+        this.props.history.push('/single_block_details')
+    }
 
     render() {
         const columns = [
             {
-                title: intl.get('file_name'),
+                title: intl.get('chainId'),
                 dataIndex: 'chainId',
                 align: 'center',
                 render: text => <span>{text}</span>,
             },
             {
-                title: intl.get('file_create_Time'),
+                title: intl.get('block_hash'),
                 dataIndex: 'hash',
                 align: 'center',
-                render: text => <span>{text}</span>,
+                render: (value, scope)  => <span className='is_choose' onClick={()=>{this.to_height_de(scope)}}>{value}</span>,
             },
             {
-                title: intl.get('file_size'),
+                title: intl.get('timestamp'),
                 dataIndex: 'timeTamp',
                 align: 'center',
                 render: value => <span>{utils.timestampToTime(value)}</span>
             },
             {
-                title: intl.get('file_version'),
+                title: intl.get('trading_volume'),
                 dataIndex: 'txcount',
                 align: 'center'
             },
         ]
         return (
             <div className='block_details_con'>
-                <Table columns={columns} dataSource={this.state.table_arr} rowKey={row => row.hash}></Table>
+                <div className='block_details_header'>
+                    {intl.get('blockchain_details')}
+                </div>
+                <div className='block_details_header'>
+                    {intl.get('block_height')}# {this.props.parames_id}
+                </div>
+                <Table  style={{marginTop:30}} columns={columns} dataSource={this.state.table_arr} rowKey={row => row.hash}>
+
+                </Table>
             </div>
         )
     }
 }
-
 function mapStateToProps(store) {
     return {
         parames_id: store.communication.home_blockDetails

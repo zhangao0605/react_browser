@@ -147,7 +147,9 @@ export class home extends Component {
                         {intl.get('trading_information')}
                     </div>
                     <div>
-                        <Table columns={columns} dataSource={this.state.table_data} rowKey={row => row.hash}></Table>
+                        <Table pagination={false} columns={columns} dataSource={this.state.table_data} rowKey={row => row.hash}>
+
+                        </Table>
 
                     </div>
 

@@ -1,0 +1,21 @@
+.single_con {
+    padding: 0 5%;
+    margin-top: 50px;
+}
+
+.single_con .ant-collapse > .ant-collapse-item > .ant-collapse-header {
+    color: #1890ff;
+    user-select: none;
+
+}
+.ant-collapse-content > .ant-collapse-content-box{
+    user-select: none;
+    font-size: 16px;
+}
+.chnage_icons {
+    display: inline-block;
+    font-size: 20px;
+    color: #1890ff;
+    cursor: pointer;
+
+}
