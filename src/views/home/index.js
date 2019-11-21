@@ -6,7 +6,7 @@ import {connect} from 'react-redux'
 import store from '../../store/index'
 import './index.css'
 import utils from '../../utils/index'
-import {home_blockDetails} from '../../store/actions/addAction'
+import {home_blockDetails,search_transaction} from '../../store/actions/addAction'
 
 export class home extends Component {
     constructor(props) {
@@ -54,6 +54,11 @@ export class home extends Component {
            input_value_1:value
        })
     }
+    search_tr(value ){
+       this.setState({
+           input_value_2:value
+       })
+    }
     search_block_heght() {
         if (this.state.input_value_1 === '') {
             message.error('请输入正确块高，（不能为空！）')
@@ -62,7 +67,40 @@ export class home extends Component {
             this.props.history.push('/block_details')
         }
     }
+    search_block_transaction() {
+        if (this.state.input_value_2 === '') {
+            message.error('请输入正确交易hash，（不能为空！）')
+        } else {
+            let send_data = {
+                "page": 1,
+                "chainId": "",
+                "hash":this.state.input_value_2,
+                "pagesize": 5
+            }
+            $http.post(this, {
+                url: "/chain/getBlockNewTxPage",
+                dataType: "json",
+                data: send_data,
+                success: function (res) {
+                    if (res.code === 200) {
+                        if(res.data.transactionsList.dataList.length===0){
+                            message.error('查询结果为空，请输入正确交易hash（不能为空！）')
+                        }else {
+                            this.props.dispatch(search_transaction(this.state.input_value_2))
+                            this.props.history.push('/intrachain_transfer')
+                        }
+                    } else {
 
+                    }
+
+                },
+            })
+
+        }
+    }
+    see_more_tr(){
+        console.log('45455')
+    }
     render() {
         const columns = [
             {
@@ -134,12 +172,12 @@ export class home extends Component {
                     </div>
                     <div className='home_search_part'>
                         {intl.get('block_transaction_inquiry')}<br/>
-                        <Input placeholder={intl.get('enter_search_content')} className='search_class'
+                        <Input placeholder={intl.get('enter_search_hash')} className='search_class'
                                defaultValue=''
-                               value={this.state.input_value_2}>
+                               onChange={(e)=>{this.search_tr(e.target.value)}}>
                         </Input>
                         <Button type='primary' style={{marginLeft: 30}}
-                                onClick={() => this.search_2()}>{intl.get('search')}</Button>
+                                onClick={() => this.search_block_transaction()}>{intl.get('search')}</Button>
                     </div>
                 </div>
                 <div className='home_tr'>
@@ -154,16 +192,20 @@ export class home extends Component {
                     </div>
 
                 </div>
+                <Button onClick={()=>this.see_more_tr()}>
+                    查看更多交易
+                </Button>
             </div>
         )
     }
 
 }
 
-function mapStateToProps(store) {
-    return {
-        lang: store.change_lang.lang
-    }
-}
+// function mapStateToProps(store) {
+//     return {
+//         lang: store.change_lang.lang
+//     }
+// }
 
-export default connect(mapStateToProps)(home)
+export default connect()(home)
+// export default home

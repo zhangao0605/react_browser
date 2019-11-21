@@ -19,6 +19,7 @@
   "api_download": "API下载",
   "trading_information": "交易信息",
   "enter_search_content": "请输入搜索内容",
+  "enter_search_hash": "请输入正确交易hash",
   "chainId": "ChainId",
   "block_hash": "区块哈希",
   "trading_volume": "交易量",

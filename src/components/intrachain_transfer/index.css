@@ -1,0 +1,13 @@
+.in_con{
+    padding: 0 5%;
+    margin-top: 50px;
+}
+.in_con .ant-collapse > .ant-collapse-item > .ant-collapse-header {
+    color: #1890ff;
+    user-select: none;
+
+}
+.in_con .ant-collapse-content > .ant-collapse-content-box{
+    user-select: none;
+    font-size: 16px;
+}

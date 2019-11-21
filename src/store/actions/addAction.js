@@ -1,4 +1,4 @@
-import {ADD_NUMBER,LANG,HOME_BLOCKDETAILS,SEARCH_BLOCKHEIGHT} from '../actionTypes'
+import {ADD_NUMBER,LANG,HOME_BLOCKDETAILS,SEARCH_BLOCKHEIGHT,SEARCH_TRANSACTION} from '../actionTypes'
 export function addNumber() {
     return{
         type:ADD_NUMBER
@@ -19,6 +19,12 @@ export function home_blockDetails(value) {
 export function search_blockheight(value) {
     return{
         type:SEARCH_BLOCKHEIGHT,
+        value
+    }
+}
+export function search_transaction(value) {
+    return{
+        type:SEARCH_TRANSACTION,
         value
     }
 }

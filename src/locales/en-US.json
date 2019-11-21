@@ -17,6 +17,7 @@
   "block_transaction_inquiry": "Block transaction inquiry",
   "search": "search",
   "api_download": "API download",
+  "enter_search_hash": "Please enter the correct transaction hash",
   "trading_information": "Trading Information",
   "enter_search_content": "Enter search content",
   "chainId": "ChainId",
