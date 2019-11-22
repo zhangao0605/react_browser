@@ -38,7 +38,7 @@ export class header extends Component {
     render() {
         return (
             <div className='header_con'>
-                <div className='heder_name' style={{}} onClick={()=>{history.push('/')}}>THINKET</div>
+                <div  className='heder_name' style={{}} onClick={()=>{history.push('/')}}>THINKET</div>
                 <div>
                     <Select
                         size='default'
@@ -52,6 +52,9 @@ export class header extends Component {
                     <span className='heder_dow' onClick={() => {
                         history.push(`/download`);
                     }}>{intl.get('api_download')}</span>
+                    <div>
+
+                    </div>
                 </div>
             </div>
         )
