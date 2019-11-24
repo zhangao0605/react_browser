@@ -99,7 +99,7 @@ export class home extends Component {
         }
     }
     see_more_tr(){
-        console.log('45455')
+        this.props.history.push('/trading_information')
     }
     render() {
         const columns = [
@@ -192,7 +192,7 @@ export class home extends Component {
                     </div>
 
                 </div>
-                <Button onClick={()=>this.see_more_tr()}>
+                <Button type='primary' className='see_more_tr' onClick={()=>this.see_more_tr()}>
                     查看更多交易
                 </Button>
             </div>

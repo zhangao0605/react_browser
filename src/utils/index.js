@@ -31,5 +31,16 @@ export default {
             // }
         }
         return num
+    },
+    trading_type(e){
+        let type=''
+        if(e==1){
+            type='合约发布'
+        }else if(e==2){
+            type='合约交易'
+        }else {
+            type='链内交易'
+        }
+        return type
     }
 }
